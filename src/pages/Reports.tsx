@@ -1,8 +1,7 @@
 
-import { SharedLayout } from "@/components/shared-layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BarChart3, Download, Calendar, FileText } from "lucide-react";
+import { BarChart3, Download, Calendar, FileText, TrendingUp, Database, PieChart, Settings } from "lucide-react";
 
 const Reports = () => {
   const reportTypes = [
@@ -15,95 +14,101 @@ const Reports = () => {
   ];
 
   return (
-    <SharedLayout breadcrumb="Reports">
-      <div className="space-y-6">
-        {/* Report Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Reports Generated</CardTitle>
-              <BarChart3 className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">47</div>
-              <p className="text-xs text-muted-foreground">This month</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Scheduled Reports</CardTitle>
-              <Calendar className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">12</div>
-              <p className="text-xs text-muted-foreground">Automated reports</p>
-            </CardContent>
-          </Card>
+    <div className="space-y-6 max-w-4xl mx-auto">
+      {/* Page Header */}
+      <div className="text-left">
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">Reports & Analytics</h1>
+        <p className="text-gray-600 text-sm">
+          Generate comprehensive reports and analyze institutional data
+        </p>
+      </div>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Data Sources</CardTitle>
-              <FileText className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">8</div>
-              <p className="text-xs text-muted-foreground">Connected systems</p>
-            </CardContent>
-          </Card>
-        </div>
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Card className="shadow-sm border bg-gray-50/50">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+            <CardTitle className="text-xs font-semibold text-gray-700">Reports Generated</CardTitle>
+            <BarChart3 className="h-4 w-4 text-gray-500" />
+          </CardHeader>
+          <CardContent className="pb-3">
+            <div className="text-lg font-bold text-gray-900">47</div>
+            <p className="text-xs text-gray-600">Generated this month</p>
+          </CardContent>
+        </Card>
 
-        {/* Quick Actions */}
-        <div className="flex justify-between items-center">
-          <h2 className="text-xl font-semibold">Available Reports</h2>
-          <div className="space-x-2">
-            <Button variant="outline">
-              <Calendar className="w-4 h-4 mr-2" />
-              Schedule Report
-            </Button>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              <FileText className="w-4 h-4 mr-2" />
-              Create Custom Report
-            </Button>
-          </div>
-        </div>
+        <Card className="shadow-sm border bg-gray-50/50">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+            <CardTitle className="text-xs font-semibold text-gray-700">Scheduled Reports</CardTitle>
+            <Calendar className="h-4 w-4 text-gray-500" />
+          </CardHeader>
+          <CardContent className="pb-3">
+            <div className="text-lg font-bold text-gray-900">12</div>
+            <p className="text-xs text-gray-600">Automated reports active</p>
+          </CardContent>
+        </Card>
 
-        {/* Reports Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reportTypes.map((report, index) => (
-            <Card key={index} className="hover:shadow-md transition-shadow">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg">{report.name}</CardTitle>
-                  <span className={`px-2 py-1 rounded-full text-xs ${
-                    report.type === 'Academic' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'
-                  }`}>
-                    {report.type}
-                  </span>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">{report.description}</p>
-                <div className="space-y-3">
-                  <p className="text-xs text-muted-foreground">
-                    Last generated: {report.lastGenerated}
-                  </p>
-                  <div className="flex space-x-2">
-                    <Button size="sm" className="flex-1">
-                      <BarChart3 className="w-4 h-4 mr-2" />
-                      Generate
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      <Download className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        <Card className="shadow-sm border bg-gray-50/50">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+            <CardTitle className="text-xs font-semibold text-gray-700">Data Sources</CardTitle>
+            <Database className="h-4 w-4 text-gray-500" />
+          </CardHeader>
+          <CardContent className="pb-3">
+            <div className="text-lg font-bold text-gray-900">8</div>
+            <p className="text-xs text-gray-600">Connected systems</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Quick Actions */}
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-bold text-gray-900">Available Reports</h2>
+        <div className="space-x-2">
+          <Button variant="outline" className="border-gray-300 hover:bg-gray-50">
+            <Calendar className="w-4 h-4 mr-2" />
+            Schedule Report
+          </Button>
+          <Button className="bg-gray-800 hover:bg-gray-900 text-white">
+            <FileText className="w-4 h-4 mr-2" />
+            Create Custom Report
+          </Button>
         </div>
       </div>
-    </SharedLayout>
+
+      {/* Reports Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {reportTypes.map((report, index) => (
+          <Card key={index} className="shadow-lg border-0 hover:shadow-xl transition-shadow">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-lg font-semibold">{report.name}</CardTitle>
+                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                  report.type === 'Academic' ? 'bg-gray-100 text-gray-800' : 'bg-gray-200 text-gray-700'
+                }`}>
+                  {report.type}
+                </span>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-gray-600 mb-4">{report.description}</p>
+              <div className="space-y-3">
+                <p className="text-xs text-gray-500">
+                  Last generated: {report.lastGenerated}
+                </p>
+                <div className="flex space-x-2">
+                  <Button size="sm" className="flex-1 bg-gray-800 hover:bg-gray-900 text-white">
+                    <BarChart3 className="w-4 h-4 mr-2" />
+                    Generate
+                  </Button>
+                  <Button variant="outline" size="sm" className="border-gray-300 hover:bg-gray-50">
+                    <Download className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
   );
 };
 

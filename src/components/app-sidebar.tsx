@@ -1,4 +1,3 @@
-
 import { 
   Users, 
   UserCheck, 
@@ -24,7 +23,7 @@ import {
 } from "@/components/ui/sidebar";
 
 const navigationItems = [
-  { title: "Student Login", url: "/", icon: Users },
+  { title: "Student Enrollment Portal", url: "/", icon: Users },
   { title: "Faculty Management", url: "/faculty", icon: UserCheck },
   { title: "Registrar", url: "/registrar", icon: FileText },
   { title: "Accounting", url: "/accounting", icon: Calculator },
